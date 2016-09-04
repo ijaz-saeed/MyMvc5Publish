@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-           <a href="@Url.Action("Edit", new { id = item.Id })" class="glyphicon glyphicon-pencil"></a> |
-          <a href="@Url.Action( "Details", new { id=item.Id })" class="glyphicon glyphicon-eye-open"></a>   |
-            <a href="@Url.Action( "Delete", new { id=item.Id })" class="glyphicon glyphicon-remove"></a> 
+           <a href="@Url.Action("Edit", new { id = item.Id })" > <span class="glyphicon glyphicon-pencil"></span> </a> |
+          <a href="@Url.Action( "Details", new { id=item.Id })" > <span class="glyphicon glyphicon-eye-open"></span> </a>   |
+            <a href="@Url.Action( "Delete", new { id=item.Id })" > <span class="glyphicon glyphicon-remove"></span> </a> 
         </td>
     </tr>
 }
