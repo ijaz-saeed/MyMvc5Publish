@@ -23,7 +23,7 @@
 @foreach (var item in Model) {
     <tr>
         <td title="@item.Url">
-         @Html.ActionLink(item.Url,"Edit", new { id = item.Id }) 
+         @Html.ActionLink(string.IsNullOrEmpty(item.Url) ? "<NA>" : item.Url, "Edit", new { id = item.Id }) 
         </td>
         <td title="@item.Description">
             @Html.DisplayFor(modelItem => item.Description)
