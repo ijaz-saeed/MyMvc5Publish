@@ -1,8 +1,13 @@
-﻿@model IEnumerable<WebMvc5.Models.Blog>
+﻿@using PagedList;
+@using PagedList.Mvc
+
+@model  PagedList.IPagedList<WebMvc5.Models.Blog>
 
 @{
     ViewBag.Title = "Index";
 }
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h2>Index</h2>
 
@@ -12,10 +17,10 @@
 <table class="table table-hover">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Url)
+            Url
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Description
         </th>
         <th></th>
     </tr>
@@ -37,3 +42,7 @@
 }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",      new { page  }))

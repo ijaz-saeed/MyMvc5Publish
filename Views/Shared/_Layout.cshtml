@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.cerulean.min.css" rel="stylesheet" type="text/css" />    
+    <link href="~/Content/bootstrap.cerulean.min.css" rel="stylesheet" type="text/css" />
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>    
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-        
+
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>    
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>    
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
     <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
@@ -29,20 +29,59 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li> @Html.ActionLink("Home","Index","Home") </li>
-                    <li> @Html.ActionLink("Blogs","Index","Blog") </li>
+                    <li>@Html.ActionLink("Home", "Index", "Home") </li>
+                    <li>@Html.ActionLink("Blogs", "Index", "Blog") </li>
+                    <li>@Html.ActionLink("Ajax", "Index2", "Blog") </li>
                 </ul>
             </div>
         </div>
-    </div>
-    
+    </div>    
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             @Html.Partial("_footer")
         </footer>
-    </div>    
+    </div>
+
+    @* Global CRUD Modal *@
+    <div>
+        @*@Html.Partial("_glbCRUDModal")*@
+
+        <div id="divModal"></div>
+    </div>
+
+    @* Global js Scripts *@
+    <script type="text/javascript">
+        $(function () {
+
+            // init bs tooltips 
+            $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+
+            $('a.ajaxLoad').click(function (event) {
+                event.preventDefault();
+
+                // load content
+                var url = $(this).attr('href');
+                //var container = $('#divModalBody').html('');
+                var container = $('#divModal').html('');
+
+                container.load(url, function (responseTxt, statusTxt, xhr) {
+                    if (statusTxt == "success")
+                        $('#crudModal').modal();
+                    if (statusTxt == "error")
+                        alert("Error: " + xhr.status + ": " + xhr.statusText);
+                });
+
+            });
+
+        });
+    </script>
+
+    @* Page Level Scripts *@
+    @RenderSection("scripts", false)
+
 
 </body>
 </html>

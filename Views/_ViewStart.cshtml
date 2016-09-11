@@ -1,3 +1,10 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Request.IsAjaxRequest())
+    {
+        Layout = "~/Views/Shared/_glbCRUDModal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
