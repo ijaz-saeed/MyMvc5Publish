@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Ijaz Saeed\Personal\git-repos\MyMVC5\WebMvc5\Angular\my-mvc\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! D:\Ijaz Saeed\Personal\git-repos\MyMVC5\WebMvc5\angular\my-mvc\src\styles.css */"./src/styles.css");
 
 
 /***/ })
